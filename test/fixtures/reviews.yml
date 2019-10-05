@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: one
+  subject: MyString
+  body: MyText
+  stars: 1
+  date: 2019-10-05 10:40:38
+
+two:
+  product: two
+  subject: MyString
+  body: MyText
+  stars: 1
+  date: 2019-10-05 10:40:38
