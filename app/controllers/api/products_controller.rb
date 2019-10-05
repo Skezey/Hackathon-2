@@ -1,11 +1,16 @@
 class Api::ProductsController < ApplicationController
   before_action :set_department
   def index
-    render json: Product.all
+    render json: @department.products
+  end
+
+  def show
+    @product = @department.products.find(params[:id])
+    render json: @product
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = @department.products.new(product_params)
     if @product.save
       render json: @product
     else
@@ -14,7 +19,7 @@ class Api::ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = @department.products.find(params[:id])
     if @product.update(product_params)
       render json: @product
     else
@@ -23,7 +28,7 @@ class Api::ProductsController < ApplicationController
   end
 
   def destroy
-    Product.find(params[:id]).destroy
+    @department.products.find(params[:id]).destroy
     render json: { message: 'Product deleted'}
   end
 

@@ -1,8 +1,32 @@
-import React from 'react';
-import { Header, } from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-const Home = () => (
-  <Header as="h3" textAlign="center">Devise Auth App</Header>
-)
+
+class Home extends Component {
+  state = { departments: [] }
+  componentDidMount() {
+    axios.get('/api/departments')
+    .then( res => {
+      console.log(res)
+      this.setState({ departments: res.data })
+    })
+    .catch( err => {
+      console.log(err)
+    })
+  }
+  render() {
+    return (
+      <ul>
+        {this.state.departments.map(({ title, id }) => (
+          <li key={id}>
+            { <Link to={`/departments/${id}`}>{title}</Link>}
+          </li>
+        ))}
+      </ul> 
+    )
+  }
+}
+
 
 export default Home;

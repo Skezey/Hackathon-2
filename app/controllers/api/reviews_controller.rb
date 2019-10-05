@@ -1,11 +1,16 @@
 class Api::ReviewsController < ApplicationController
   before_action :set_product
   def index
-    render json: Review.all
+    render json: @product.reviews
+  end
+
+  def show
+    @review = @products.reviews.find(params[:id])
+    render json: @review
   end
 
   def create
-    @review = Review.new(review_params)
+    @review = @product.reviews.new(review_params)
     if @review.save
       render json: @review
     else
@@ -14,7 +19,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def update
-    @review = Review.find(params[:id])
+    @review = @product.reviews.find(params[:id])
     if @review.update(review_params)
       render json: @review
     else
@@ -23,7 +28,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def destroy
-    Review.find(params[:id]).destroy
+    @department.reviews.find(params[:id]).destroy
     render json: { message: 'Review deleted'}
   end
 
