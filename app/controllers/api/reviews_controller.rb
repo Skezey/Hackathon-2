@@ -28,7 +28,7 @@ class Api::ReviewsController < ApplicationController
   end
 
   def destroy
-    @department.reviews.find(params[:id]).destroy
+    @product.reviews.find(params[:id]).destroy
     render json: { message: 'Review deleted'}
   end
 
