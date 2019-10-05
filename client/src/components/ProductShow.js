@@ -94,10 +94,6 @@ class ProductShow extends Component {
             update={this.updateReview}
             toggleEdit={this.toggleEdit}
           /> : <li key={r.id}>
-            {/* { <Link to={{
-              pathname: `/reviews/${r.id}`,
-              state: { review: {...r} }
-            }}>{r.subject}</Link>}  */}
             {r.subject}: {r.body}
             <br />
             {r.stars} stars
