@@ -10,7 +10,7 @@ class Api::ProductsController < ApplicationController
   end
 
   def create
-    @product = @department.products.new(product_params)
+    @product = current_user.department.products.new(product_params)
     if @product.save
       render json: @product
     else
@@ -19,7 +19,7 @@ class Api::ProductsController < ApplicationController
   end
 
   def update
-    @product = @department.products.find(params[:id])
+    @product = current_user.department.products.find(params[:id])
     if @product.update(product_params)
       render json: @product
     else

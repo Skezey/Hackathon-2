@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Header, Segment, Button, Icon } from 'semantic-ui-react';
 import axios from 'axios';
 
 class ProductShow extends Component {
@@ -30,6 +31,7 @@ class ProductShow extends Component {
       <div>
       {/* <h2>{description}</h2> */} 
       <p>{name}: {description}</p> 
+      <p>Price: ${price}</p>
       <p>Stock: {stock}</p>
       <ul>
         {this.state.reviews.map((r) => (
@@ -41,6 +43,7 @@ class ProductShow extends Component {
             {r.subject}: {r.body}
             <br />
             {r.stars} stars
+            <br />
           </li>
         ))}
       </ul> 
