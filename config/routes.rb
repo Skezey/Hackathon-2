@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     resources :departments do
       resources :products
     end
-
-    resources :reviews
+    resources :products do
+      resources :reviews
+    end
   end
 end
